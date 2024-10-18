@@ -4,10 +4,6 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    fontFamily: {
-
-    },
-
     extend: {},
   },
   plugins: [],
