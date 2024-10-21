@@ -3,7 +3,10 @@
 @tailwind utilities;
 
 .navbar{
-  @apply bg-white px-4 py-6 flex gap-6 text-base overflow-scroll;
+  @apply bg-white px-4 py-6 flex gap-6 text-base overflow-scroll ;
+  @media (min-width: 640px) {
+    @apply static w-[118px] overflow-hidden h-screen
+  }
 }
 .navbar-btn {
   @apply rounded-lg border-2 border-zinc-400 text-zinc-400 px-3 py-2 flex gap-3 items-center duration-500;
@@ -12,5 +15,11 @@
   }
   &:disabled{
     @apply border-zinc-300 bg-zinc-300 text-zinc-600;
+  }
+}
+.navbar-icon{
+  @apply rounded w-7 h-7 flex items-center justify-center;
+  span{
+    @apply bg-clip-content bg-no-repeat block w-5 h-5;
   }
 }

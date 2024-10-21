@@ -1,36 +1,20 @@
 <nav class="navbar">
-  <button
-    class="navbar-btn group"
-  >
-    <div
-      class="rounded group-hover:bg-blue-700 w-7 h-7 flex items-center justify-center duration-500"
-    >
-      <span
-        class="bg-edital-default group-hover:bg-edital-active bg-clip-content bg-no-repeat block w-5 h-5 duration-500"
-      ></span>
+  <a routerLink="/edital" class="navbar-btn group">
+    <div class="navbar-icon group-hover:bg-blue-700">
+      <span class="bg-edital-default group-hover:bg-edital-active"></span>
     </div>
     Edital
-  </button>
-  <button
-    class="navbar-btn group"
-  >
-    <div
-      class="rounded group-hover:bg-blue-700 w-7 h-7 flex items-center justify-center"
-    >
-      <span
-        class="bg-atest-default group-hover:bg-atest-active bg-clip-content bg-no-repeat block w-5 h-5"
-      ></span>
+  </a>
+  <a routerLink="/atestados" class="navbar-btn group">
+    <div class="navbar-icon group-hover:bg-blue-700">
+      <span class="bg-atest-default group-hover:bg-atest-active"></span>
     </div>
     Atestado
-  </button>
-  <button
-    class="navbar-btn group" disabled
-  >
-    <div
-      class="rounded w-7 h-7 flex items-center justify-center"
-    >
+  </a>
+  <button class="navbar-btn" disabled>
+    <div class="navbar-icon" >
       <span
-        class="bg-chatbot-default group-disabled:bg-chatbot-disabled bg-clip-content bg-no-repeat block w-5 h-5"
+        class="bg-chatbot-default"
       ></span>
     </div>
     Chat IA
