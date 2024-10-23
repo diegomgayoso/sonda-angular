@@ -1,1 +1,22 @@
-<p>navbar works!</p>
+<nav class="navbar">
+  <a routerLink="edital" routerLinkActive="active" class="navbar-btn group">
+    <div class="navbar-icon group-hover:bg-blue-700">
+      <span class="bg-edital-default group-hover:bg-edital-active"></span>
+    </div>
+    Edital
+  </a>
+  <a routerLink="atestados" routerLinkActive="active" class="navbar-btn group">
+    <div class="navbar-icon group-hover:bg-blue-700">
+      <span class="bg-atest-default group-hover:bg-atest-active"></span>
+    </div>
+    Atestado
+  </a>
+  <button class="navbar-btn group" disabled>
+    <div class="navbar-icon sm:group-disabled:bg-zinc-300" disableed>
+      <span
+        class="bg-chatbot-default"
+      ></span>
+    </div>
+    Chat IA
+  </button>
+</nav>

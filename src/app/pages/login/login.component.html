@@ -1,25 +1,30 @@
-<app-header></app-header>
 <main class="flex w-full h-screen">
   <div class="flex-1 hidden sm:flex items-center justify-center px-6 py-8">
     <img src="/security-banner.png" class="w-2/3" alt="" />
   </div>
-  <div class="flex-1 flex flex-col px-4 py-8 gap-14 items-center justify-center bg-white">
+  <div
+    class="flex-1 flex flex-col px-4 py-8 gap-14 items-center justify-center bg-white"
+  >
     <div class=" ">
-      <img class="block sm:hidden w-48" src="/security-banner-mobile.png" alt="" />
+      <img
+        class="block sm:hidden w-48"
+        src="/security-banner-mobile.png"
+        alt=""
+      />
       <h3 class="hidden sm:block text-[2rem]">Login</h3>
     </div>
-    <form class="flex flex-col gap-6 w-full">
+    <form class="flex flex-col gap-6 sm:max-w-lg w-full">
       <mat-form-field appearance="outline">
-        <input matInput placeholder="E-mail *">
+        <input matInput placeholder="E-mail *" type="email"/>
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <input matInput placeholder="Senha *">
+        <input matInput placeholder="Senha *" type="password" />
         <mat-hint>Regra de senha</mat-hint>
       </mat-form-field>
     </form>
-    <div>
-      <img src="/recaptcha.png" alt="">
-    </div>
-    <button mat-flat-button>Entrar</button>
+
+    <img class="sm:max-w-md w-full" src="/recaptcha.png" alt="" />
+
+    <button class="w-full sm:max-w-md" mat-flat-button>Entrar</button>
   </div>
 </main>
