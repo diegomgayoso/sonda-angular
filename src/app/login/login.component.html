@@ -14,18 +14,18 @@
       />
       <h3 class="hidden sm:block text-[2rem]">Login</h3>
     </div>
-    <form class="flex flex-col gap-6 sm:max-w-lg w-full">
+    <form [formGroup]="userForm" (ngSubmit)="login()" class="flex flex-col gap-6 sm:max-w-lg w-full">
       <mat-form-field appearance="outline">
-        <input matInput placeholder="E-mail *" type="email"/>
+        <input matInput formControlName="email" placeholder="E-mail *" type="email"/>
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <input matInput placeholder="Senha *" type="password" />
+        <input matInput formControlName="password" placeholder="Senha *" type="password" />
         <mat-hint>Regra de senha</mat-hint>
       </mat-form-field>
+
+      <!-- <img class="sm:max-w-md w-full" src="/recaptcha.png" alt="" /> -->
+
+      <button type="submit" [disabled]="!userForm.valid" class="w-full sm:max-w-md" mat-flat-button>Entrar</button>
     </form>
-
-    <img class="sm:max-w-md w-full" src="/recaptcha.png" alt="" />
-
-    <button class="w-full sm:max-w-md" mat-flat-button>Entrar</button>
   </div>
 </main>
