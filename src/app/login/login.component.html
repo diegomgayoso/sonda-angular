@@ -14,7 +14,7 @@
       />
       <h3 class="hidden sm:block text-[2rem]">Login</h3>
     </div>
-    <form [formGroup]="userForm" (ngSubmit)="login()" class="flex flex-col gap-6 sm:max-w-lg w-full">
+    <form [formGroup]="userForm" (ngSubmit)="login(userForm)" class="flex flex-col gap-6 sm:max-w-lg w-full">
       <mat-form-field appearance="outline">
         <input matInput formControlName="email" placeholder="E-mail *" type="email"/>
       </mat-form-field>
