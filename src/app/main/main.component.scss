@@ -22,4 +22,5 @@
 
 .container {
   grid-area: container;
+  @apply px-4 py-6;
 }

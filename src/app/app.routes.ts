@@ -11,8 +11,9 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: '',
-    canActivate: [authGuard],
-    canActivateChild: [authGuard],
+    // Comentário para ter acesso livre as rotas
+    // canActivate: [authGuard],
+    // canActivateChild: [authGuard],
     component: MainComponent,
     children: [
       {
