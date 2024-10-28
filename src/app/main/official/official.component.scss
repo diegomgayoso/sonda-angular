@@ -1,14 +1,4 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-.edital {
-  @apply bg-white rounded-3xl ;
-  .header-edital{
-    @apply flex items-center gap-4 pb-6 border-b px-4 py-6;
-  }
-  .content-edital{
-    @apply flex flex-col items-center justify-around gap-10 px-4 py-10 ;
-  }
-}
+@import '../main.component.scss';

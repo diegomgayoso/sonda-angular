@@ -4,11 +4,10 @@
 .main {
   @apply flex flex-col;
   @media (min-width: 640px) {
-    @apply grid grid-cols-[118px_1fr_1fr] grid-rows-[122px_1fr_1fr] gap-x-6 gap-y-10 grid-flow-row;
+    @apply grid grid-cols-[118px_1fr] grid-rows-[122px_1fr] gap-x-6 grid-flow-row;
     grid-template-areas:
-      "nav  header     header"
-      "nav  container  container"
-      "nav  container  container";
+      "nav  header"
+      "nav  container";
   }
 }
 
@@ -22,5 +21,14 @@
 
 .container {
   grid-area: container;
-  @apply px-4 py-6;
+  @apply px-4 py-6 sm:pr-6 sm:px-0;
+}
+.page-container {
+  @apply bg-white rounded-3xl;
+  .header-page {
+    @apply flex items-center gap-4 pb-6 border-b px-4 py-6 sm:px-6;
+  }
+  .page-content {
+    @apply flex flex-col items-center justify-around gap-10 px-4 py-10;
+  }
 }

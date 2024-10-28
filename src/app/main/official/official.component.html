@@ -1,11 +1,44 @@
-<section class="edital">
-  <div class="header-edital">
+<section class="edital page-container">
+  <header class="header-page">
     <img class="size-8" src="/edital-icon-blue.svg" alt="" />
     <p class="text-blue-700 font-medium">Verificação de aderência ao edital</p>
-  </div>
-  <div class="content-edital">
-    <h3 class="font-medium text-xl">Insira o edital para iniciar a verificação</h3>
-    <img src="/undraw-add-files.svg" alt="">
-    <button class="w-full bg-black text-white font-medium rounded-3xl p-3">Inserir edital</button>
+  </header>
+  <div class="page-content">
+    <h3 class="font-medium text-xl">
+      Insira o edital para iniciar a verificação
+    </h3>
+    <div
+      class="w-full flex flex-col items-center gap-10 sm:border-dashed sm:border-2 sm:border-sky-500 sm:rounded-3xl sm:py-10"
+    >
+      <img src="/undraw-add-files.svg" alt="" />
+
+      @if(innerWidth>640){
+      <div class="inputFile text-center" for="uploadFile" >
+        <p class="text-xl font-medium +">
+          Arraste e solte o arquivo aqui <br />
+        </p>
+        <input
+          id="uploadFile"
+          type="file"
+          accept=".pdf"
+        />
+        <label for="uploadFile" class="text-blue-700"
+          >ou clique para pesquisar
+        </label>
+        <p class="text-xl font-medium">Arraste e solte o arquivo aqui <br /></p>
+        <small class="text-base font-medium">
+          ou
+          <span class="text-blue-700">clique para pesquisar</span>
+        </small>
+      </div>
+      }@else {
+      <label
+        class="w-full bg-black text-center text-white font-medium rounded-3xl p-3"
+        for="uploadFile"
+        >Inserir o edital
+        <input class="hidden" id="uploadFile" type="file" accept=".pdf" />
+      </label>
+      }
+    </div>
   </div>
 </section>
