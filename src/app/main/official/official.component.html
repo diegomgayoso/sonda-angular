@@ -12,8 +12,8 @@
     >
       <img src="/undraw-add-files.svg" alt="" />
 
-      @if(innerWidth>640){
-      <div class="inputFile text-center" for="uploadFile" >
+      <!-- @if(innerWidth>640){ -->
+      <div class="inputFile text-center max-sm:hidden " for="uploadFile" >
         <p class="text-xl font-medium +">
           Arraste e solte o arquivo aqui <br />
         </p>
@@ -31,14 +31,14 @@
           <span class="text-blue-700">clique para pesquisar</span>
         </small>
       </div>
-      }@else {
+      <!-- }@else { -->
       <label
-        class="w-full bg-black text-center text-white font-medium rounded-3xl p-3"
+        class="w-full bg-black text-center text-white font-medium rounded-3xl p-3 sm:hidden"
         for="uploadFile"
         >Inserir o edital
         <input class="hidden" id="uploadFile" type="file" accept=".pdf" />
       </label>
-      }
+      <!-- } -->
     </div>
   </div>
 </section>

@@ -9,9 +9,4 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './official.component.scss'
 })
 export class OfficialComponent {
-  public innerWidth: any;
-
-  ngOnInit(): void {
-    this.innerWidth = window.innerWidth;
-  }
 }
