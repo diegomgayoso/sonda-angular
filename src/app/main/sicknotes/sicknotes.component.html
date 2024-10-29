@@ -1,6 +1,23 @@
 <section class="sicknotes page-container">
-  <header class="header-page">
-    <img class="size-8" src="/atestado-icon-blue.svg" alt="" />
-    <p class="text-blue-700 font-medium">Atestados de capacidade técnica</p>
+  <header class="header-atestado">
+    <div class="flex items-center gap-4 px-4 py-6">
+      <img class="size-8" src="/atestado-icon-blue.svg" alt="icone atestado" />
+      <p class="text-blue-700 font-medium">Atestados de capacidade técnica</p>
+    </div>
+    <span class="border-b border-b-zinc-300 w-full sm:hidden"></span>
+    <div class="px-4 py-8 w-full sm:max-w-64">
+      <button class="text-white bg-black p-3 rounded-3xl w-full">
+        Cadastrar novo atestado
+      </button>
+    </div>
   </header>
+  <div class="flex items-center gap-4 h-1 mx-4 sm:hidden">
+    <span class="border-b-2 border-b-zinc-300 w-3/5 sm:hidden"></span>
+    <p class="text-zinc-300 font-medium">ou</p>
+    <span class="border-b-2 border-b-zinc-300 w-3/5 sm:hidden"></span>
+  </div>
+  <div class="input mx-4">
+    <input type="text">
+    <mat-icon>search</mat-icon>
+  </div>
 </section>

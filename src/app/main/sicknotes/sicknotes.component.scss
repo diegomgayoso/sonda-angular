@@ -2,3 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 @import '../main.component.scss';
+
+
+.input {
+  @apply rounded-3xl border-2 border-zinc-300;
+  input{
+    padding: 1rem;
+    border-radius: 24px;
+    width: 100%;
+  }
+
+}
