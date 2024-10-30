@@ -1,7 +1,5 @@
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-// import { BehaviorSubject, Observable, of } from 'rxjs';
-
 
 interface User {
   id: number;

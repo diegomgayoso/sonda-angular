@@ -1,4 +1,4 @@
-<section class="sicknotes page-container">
+<section class="sicknotes page-container pb-10">
   <header class="header-atestado">
     <div class="flex items-center gap-4 px-4 py-6">
       <img class="size-8" src="/atestado-icon-blue.svg" alt="icone atestado" />
@@ -11,13 +11,71 @@
       </button>
     </div>
   </header>
-  <div class="flex items-center gap-4 h-1 mx-4 sm:hidden">
+  <div class="flex items-center gap-4 h-1 m-4 sm:hidden">
     <span class="border-b-2 border-b-zinc-300 w-3/5 sm:hidden"></span>
     <p class="text-zinc-300 font-medium">ou</p>
     <span class="border-b-2 border-b-zinc-300 w-3/5 sm:hidden"></span>
   </div>
-  <div class="input mx-4">
-    <input type="text">
-    <mat-icon>search</mat-icon>
+  <div class="w-full p-4 flex flex-col items-center gap-6 sm:flex-row">
+    <mat-form-field class="grow" appearance="outline">
+      <input
+        class="custom-padding"
+        matInput
+        type="text"
+        placeholder="Buscar atestado"
+      />
+      <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
+    <div class="filter-content flex items-center justify-between ">
+      <div class="filter flex gap-2 ">
+        <img class="size-6" src="/sort.svg" alt="" />
+        <p class="text-zinc-400 font-medium">Ordenar por:</p>
+      </div>
+      <button mat-button [matMenuTriggerFor]="filter" class="flex items-center">
+        {{selectedFilter}}
+        <mat-icon class="">keyboard_arrow_down</mat-icon>
+      </button>
+      <mat-menu #filter="matMenu">
+        <button class="flex flex-row-reverse px-2" mat-menu-item (click)="selectedFilter = 'Mais recentes'">
+          Mais recentes @if(selectedFilter === 'Mais recentes'){
+            <mat-icon>check</mat-icon>
+          }
+        </button>
+        <button class="flex flex-row-reverse px-2" mat-menu-item (click)="selectedFilter = 'Mais utilizados'">
+          Mais utilizados
+          @if(selectedFilter === 'Mais utilizados'){
+            <mat-icon>check</mat-icon>
+          }
+        </button>
+        <button class="flex flex-row-reverse px-2" mat-menu-item (click)="selectedFilter = 'Ordem Alfabética'">
+          Ordem alfabética
+          @if(selectedFilter === 'Ordem Alfabética'){
+            <mat-icon>check</mat-icon>
+          }
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+  <div class="list-sicknotes">
+    <div class="header-list flex justify-between text-zinc-400 p-4 bg-zinc-200 sm:hidden">
+      <p >Atestados cadastrados</p>
+      <p>1-5 de 100</p>
+    </div>
+    <div
+      class="header-list flex justify-between text-zinc-400 p-4  bg-zinc-200 max-sm:hidden"
+    >
+      <p class="grow">Nome do atestado</p>
+      <p class="grow">Capacidade atestada</p>
+      <p class="grow">Emissor</p>
+      <p class="grow text-zinc-200">Ações</p>
+    </div>
+    <mat-list *ngFor="let item of sicknotes">
+      <app-list-item [sicknotes]="item"></app-list-item>
+    </mat-list>
+  </div>
+  <div class="w-full flex justify-center pt-10">
+    <button class="bg-black p-4 text-white font-medium rounded-3xl">
+      Verificar outro edital
+    </button>
   </div>
 </section>
