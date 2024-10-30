@@ -35,7 +35,7 @@ export class OfficialComponent {
     this.loading = true;
 
     try {
-      const response = await fetch('../consulta.php', {
+      const response = await fetch('http://164.152.36.26/consulta.php', {
         method: 'POST',
         body: formData
       });
@@ -46,9 +46,9 @@ export class OfficialComponent {
 
       const data = await response.json();
       if (data.links && Array.isArray(data.links)) {
-        this.resultados = data.links.map((link: string, index: number) => ({
+        this.resultados = data.links.map((link: { url: string }, index: number) => ({
           label: `Resultado ${index + 1}`,
-          url: link.replace(/<[^>]+>/g, '')
+          url: link.url
         }));
       } else {
         alert('Nenhum resultado encontrado.');
