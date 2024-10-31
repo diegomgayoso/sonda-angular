@@ -7,27 +7,29 @@
     <h3 class="font-medium text-xl">
       Insira o edital para iniciar a verificação
     </h3>
+    @if (!fileName) {
     <div
-      class="w-full flex flex-col items-center gap-10 sm:border-dashed sm:border-2 sm:border-sky-500 sm:rounded-3xl sm:py-10"
+      appUploadDragAndDrop
+      (onSelectFiles)="onDropFile($event)"
+      class="w-full flex flex-col items-center gap-10 sm:border-dashed sm:border-2 sm:border-sky-500 sm:rounded-3xl sm:py-10 sm:bg-sky-100"
     >
-      <!-- <img src="/undraw-add-files.svg" alt="" />
+      <img src="/undraw-add-files.svg" alt="" />
 
       <div class="inputFile text-center max-sm:hidden" for="uploadFile">
-        <p class="text-xl font-medium +">
+        <p class="text-xl font-medium text-zinc-950">
           Arraste e solte o arquivo aqui <br />
         </p>
-        <input id="uploadFile" type="file" accept=".pdf"
-        (change)="onFileSelected($event)"  />
-        <label for="uploadFile" class="text-blue-700"
-          >ou clique para pesquisar
+        <input
+          id="uploadFile"
+          type="file"
+          multiple
+          accept=".pdf"
+          (change)="onFileSelected($event)"
+        />
+        <label for="uploadFile" class="text-blue-700">
+          <span class="text-zinc-950">ou</span> clique para pesquisar
         </label>
-        <p class="text-xl font-medium">Arraste e solte o arquivo aqui <br /></p>
-        <small class="text-base font-medium">
-          ou
-          <span class="text-blue-700">clique para pesquisar</span>
-        </small>
       </div>
-
       <label
         class="w-full bg-black text-center text-white font-medium rounded-3xl p-3 sm:hidden"
         for="uploadFile"
@@ -38,42 +40,98 @@
           type="file"
           accept=".pdf"
           onchange="console.log(event.target);
-        "
+          "
         />
-      </label> -->
+      </label>
+    </div>
+    } @if (fileName) {
 
+    <div
+      class="w-full flex flex-col items-center gap-10 sm:border-dashed sm:border-2 sm:border-zinc-300 sm:rounded-3xl sm:py-10 sm:bg-zinc-100"
+    >
+      @if(loading){
       <div>
-        <h2>Upload de Arquivo</h2>
-        <input type="file" accept=".pdf" (change)="onFileSelected($event)" />
-        <p>{{ fileName }}</p>
-        <button *ngIf="selectedFile" (click)="consultarEdital()">
-          Consultar Edital
-        </button>
-
-        <div *ngIf="loading">Carregando...</div>
-
-        <div *ngIf="resultados.length > 0">
-          <h3>Resultados:</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Resultado</th>
-                <th>Ação</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let resultado of resultados">
-                <td>{{ resultado.label }}</td>
-                <td>
-                  <a [href]="resultado.url" target="_blank">Baixar Arquivo</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <button (click)="pesquisarOutroEdital()">Pesquisar Outro Edital</button>
+        <img src="loading.gif" />
       </div>
+      }@else {
+        <img src="/file.svg" alt="" />
+      }
+      <p class="p-2">{{ fileName }}</p>
+      <button
+        class="bg-black text-white p rounded-3xl flex justify-center"
+        *ngIf="selectedFile"
+        [disabled]="loading"
+        (click)="consultarEdital()"
+      >
+        Consultar Edital
+      </button>
+    </div>
+    }
+  </div>
+
+  <div>
+    <div>
+      <div *ngIf="resultados.length > 0">
+        <h3>Resultados:</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Resultado</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let resultado of resultados">
+              <td>{{ resultado.label }}</td>
+              <td>
+                <a [href]="resultado.url" target="_blank">Baixar Arquivo</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <mat-list *ngFor="let resultado of resultados">
+          <app-list-item [sicknotes]="resultado"></app-list-item>
+        </mat-list>
+      </div>
+
     </div>
   </div>
 </section>
+
+<!-- <div>
+  <h2>Upload de Arquivo</h2>
+  <input
+    type="file"
+    multiple
+    accept=".pdf"
+    (change)="onFileSelected($event)"
+  />
+  <p>{{ fileName }}</p>
+  <button *ngIf="selectedFile" (click)="consultarEdital()">
+    Consultar Edital
+  </button>
+
+  <div *ngIf="loading">Carregando...</div>
+
+  <div *ngIf="resultados.length > 0">
+    <h3>Resultados:</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Resultado</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let resultado of resultados">
+          <td>{{ resultado.label }}</td>
+          <td>
+            <a [href]="resultado.url" target="_blank">Baixar Arquivo</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <button (click)="pesquisarOutroEdital()">Pesquisar Outro Edital</button>
+</div> -->

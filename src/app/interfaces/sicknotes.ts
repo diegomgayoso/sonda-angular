@@ -5,4 +5,5 @@ export interface Sicknotes {
   emissor: string
   dateDreated: string
   downloads: number
+  url: string
 }

@@ -1,17 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { Component, } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { UploadDragAndDropDirective } from '../../directives/upload-drag-and-drop.directive';
+import { MatListModule } from '@angular/material/list';
+import { ListItemComponent } from "../../components/list/list-item/list-item.component";
 
 @Component({
   selector: 'app-official',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatListModule, UploadDragAndDropDirective, ListItemComponent],
   templateUrl: './official.component.html',
   styleUrl: './official.component.scss'
 })
 export class OfficialComponent {
+onDropFile($event: File[]) {
+  console.log($event);
+}
   selectedFile: File | null = null;
-  fileName: string = 'Nenhum arquivo selecionado';
+  fileName: string = '';
   loading: boolean = false;
   resultados: any[] = [];
 

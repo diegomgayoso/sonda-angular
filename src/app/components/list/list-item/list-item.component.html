@@ -18,10 +18,10 @@
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
+    <a mat-menu-item [href]="sicknotes.url">
       <mat-icon>download</mat-icon>
       <span>Baixar</span>
-    </button>
+    </a>
     <button mat-menu-item>
       <mat-icon>border_color</mat-icon>
       <span>Renomear</span>
