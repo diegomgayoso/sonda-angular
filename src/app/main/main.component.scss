@@ -35,3 +35,7 @@
     @apply flex flex-col items-center justify-around gap-10 px-4 py-10;
   }
 }
+
+.upload-area-active {
+  @apply bg-sky-300;
+}
