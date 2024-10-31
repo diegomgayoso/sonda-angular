@@ -1,41 +1,42 @@
-import { inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, tap } from 'rxjs';
+import { User } from '../interfaces/users';
 
-interface User {
-  id: number;
-  email: string;
-  password: string;
-}
 @Injectable({
   providedIn: 'root'
 })
 export class AuthLoginService {
-  private usersList = [
-    { id: 1, email: 'teste@teste.com', password: 'senha123' },
-    { id: 2, email: 'diego@teste.com', password: '123456' },
-  ];
 
-  private authenticatedUser: boolean = false;
+  private apiUsers = 'http://localhost:3000/users';
   currentUser!: User | null;
-  router = inject(Router);
-  constructor() { }
+  constructor(private http: HttpClient, private router: Router) { }
+
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.apiUsers);
+  }
 
   login(credentials: { email: string, password: string }) {
-    const user = this.usersList.find(u => u.email === credentials.email && u.password === credentials.password);
-    if (user) {
-      this.currentUser = user;
-      this.authenticatedUser = true;
-      this.router.navigate(['edital'])
-    } else {
-      this.authenticatedUser = false;
-    }
+    return this.http.get<User[]>(this.apiUsers).subscribe({
+      next: (users) => {
+        const user = users.find(user => user.email === credentials.email && user.password === credentials.password);
+        if (user) {
+          this.currentUser = user;
+          this.router.navigate(['/']);
+        } else {
+          this.currentUser = null;
+          this.router.navigate(['login']);
+          alert('Usuário ou senha inválidos');
+        }
+      }
+    })
   }
   logout() {
-    this.authenticatedUser = false;
     this.currentUser = null;
   }
 
   isLoggedIn(): boolean {
-    return this.authenticatedUser;
+    return this.currentUser !== null;
   }
 }

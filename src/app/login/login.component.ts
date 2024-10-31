@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthLoginService } from '../services/auth-login.service';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input'; import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { HeaderComponent } from '../components/header/header.component';
-import { FormControl, FormGroup, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthLoginService } from '../services/auth-login.service';
 
 @Component({
   selector: 'app-login',
@@ -14,14 +15,13 @@ import { AuthLoginService } from '../services/auth-login.service';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  authLoginService = inject(AuthLoginService);
-
+  constructor(private authService: AuthLoginService) { }
   userForm = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
   })
 
   login(userForm: FormGroup) {
-    this.authLoginService.login(userForm.value);
+    this.authService.login(userForm.value);
   }
 }
