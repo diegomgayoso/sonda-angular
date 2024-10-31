@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-// import { AuthGuard, authGuard } from './guards/auth.guard';
 
 import { LoginComponent } from './login/login.component';
 import { OfficialComponent } from './main/official/official.component';
@@ -12,10 +11,11 @@ export const routes: Routes = [
   {
     path: '',
     // Comentário para ter acesso livre as rotas
-    // canActivate: [authGuard],
-    // canActivateChild: [authGuard],
+    canActivate: [authGuard],
+    canActivateChild: [authGuard],
     component: MainComponent,
     children: [
+      { path: '', redirectTo: 'edital', pathMatch: 'full'},
       {
         path: 'edital',
         component: OfficialComponent,
