@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { User } from '../interfaces/users';
 
 @Injectable({
@@ -23,7 +23,9 @@ export class AuthLoginService {
         const user = users.find(user => user.email === credentials.email && user.password === credentials.password);
         if (user) {
           this.currentUser = user;
-          this.router.navigate(['/']);
+          this.router.navigate(['edital']);
+          console.log(this.currentUser, this.isLoggedIn());
+
         } else {
           this.currentUser = null;
           this.router.navigate(['login']);
@@ -32,11 +34,22 @@ export class AuthLoginService {
       }
     })
   }
+  setUser(user: User) {
+    localStorage.setItem('currentUser', JSON.stringify(user));
+  }
+
+  getUser() {
+    const userString = localStorage.getItem('user');
+    return userString ? JSON.parse(userString) : null;
+  }
+
   logout() {
     this.currentUser = null;
   }
 
   isLoggedIn(): boolean {
-    return this.currentUser !== null;
+    return !!this.currentUser;
   }
+
+
 }

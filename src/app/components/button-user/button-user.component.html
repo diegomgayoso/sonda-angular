@@ -1,0 +1,17 @@
+<div
+  class="border border-blue-300 rounded-full size-12 flex items-center justify-center bg-[#1f5cf527] sm:hidden"
+  mat-button
+  [matMenuTriggerFor]="userOption"
+>
+  <p class="font-medium uppercase text-blue-700">Us</p>
+</div>
+<mat-menu #userOption="matMenu">
+  <div>
+    <p>{{user?.nameUser}}</p>
+    <small>{{user?.email}}</small>
+  </div>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    Sair
+  </button>
+</mat-menu>

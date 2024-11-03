@@ -15,7 +15,7 @@ export const routes: Routes = [
     canActivateChild: [authGuard],
     component: MainComponent,
     children: [
-      { path: '', redirectTo: 'edital', pathMatch: 'full'},
+      // { path: '', redirectTo: 'edital', pathMatch: 'full'},
       {
         path: 'edital',
         component: OfficialComponent,

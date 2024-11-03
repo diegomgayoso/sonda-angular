@@ -23,5 +23,8 @@ export class LoginComponent {
 
   login(userForm: FormGroup) {
     this.authService.login(userForm.value);
+    // console.log(this.authService.isLoggedIn());
+    // console.log(userForm);
+
   }
 }
