@@ -1,0 +1,14 @@
+fastapi:
+    container_name: my-fastapi-app
+    build:
+      context: ./app/api_sonda  # Caminho correto para a pasta do Dockerfile
+      dockerfile: Dockerfile     # Nome do Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "${APP_PORT}:${APP_PORT}"  # Altere APP_PORT conforme necessário no .env
+    environment:
+      - APP_HOST=${APP_HOST}
+      - APP_PORT=${APP_PORT}
+    depends_on:
+      - standalone    # Dependendo se o FastAPI precisa do Milvus

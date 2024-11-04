@@ -1,0 +1,19 @@
+# Usar uma imagem base com Python
+FROM python:3.9-slim
+
+# Define o diretório de trabalho
+WORKDIR /app
+
+# Copia o arquivo de requisitos
+COPY requirements.txt ./
+
+# Instala as dependências
+RUN pip install --no-cache-dir -r requirements.txt
+RUN apt-get update && apt-get install -y curl
+
+
+# Copia o restante do código para a pasta de trabalho
+COPY . .
+
+# Comando para rodar o servidor FastAPI
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000", "--reload"]
